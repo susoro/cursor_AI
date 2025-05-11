@@ -22,6 +22,8 @@ const Container = styled(motion.div)`
   overflow-x: hidden;
   background-color: ${({ theme }) => theme.colors.background};
   position: relative;
+  height: auto;
+  touch-action: pan-y; /* 모바일에서 수직 스크롤 허용 */
 `;
 
 const BackgroundPattern = styled.div`
@@ -37,8 +39,10 @@ const BackgroundPattern = styled.div`
   pointer-events: none;
 `;
 
-const FullHeightSection = styled.div`
-  height: calc(var(--vh, 1vh) * 100);
+const SectionsContainer = styled.div`
+  width: 100%;
+  position: relative;
+  overflow: visible; /* 스크롤이 가능하도록 설정 */
 `;
 
 const WeddingInvitation = () => {
@@ -82,14 +86,16 @@ const WeddingInvitation = () => {
     >
       <BackgroundPattern />
       <Music isPlaying={isPlaying} togglePlay={togglePlay} />
-      <Header />
-      <Invitation />
-      <Gallery />
-      <Calendar />
-      <Location />
-      <Rsvp />
-      <BankAccount />
-      <Footer />
+      <SectionsContainer>
+        <Header />
+        <Invitation />
+        <Gallery />
+        <Calendar />
+        <Location />
+        <Rsvp />
+        <BankAccount />
+        <Footer />
+      </SectionsContainer>
     </Container>
   );
 };
