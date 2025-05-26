@@ -65,11 +65,16 @@ const StyledSwiper = styled(Swiper)`
   }
 `;
 
-const SlideImg = styled.img`
+const SlideImg = styled.div`
   width: 100%;
   height: 450px;
-  object-fit: cover;
   border-radius: 5px;
+  background-color: #e0d5c6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8B4513;
+  font-family: ${props => props.theme.fonts.body};
   
   @media (max-width: 768px) {
     height: 350px;
@@ -122,13 +127,13 @@ const Gallery = () => {
     },
   };
   
-  // 갤러리용 이미지 - 실제 프로젝트에서는 실제 이미지 경로로 변경 필요
+  // 갤러리용 더미 데이터 - 이미지 파일이 없으므로 텍스트로 대체
   const galleryImages = [
-    { src: '/images/gallery1.jpg', caption: '첫 만남' },
-    { src: '/images/gallery2.jpg', caption: '데이트' },
-    { src: '/images/gallery3.jpg', caption: '프로포즈' },
-    { src: '/images/gallery4.jpg', caption: '웨딩 촬영' },
-    { src: '/images/gallery5.jpg', caption: '함께하는 시간' },
+    { caption: '첫 만남' },
+    { caption: '데이트' },
+    { caption: '프로포즈' },
+    { caption: '웨딩 촬영' },
+    { caption: '함께하는 시간' },
   ];
   
   return (
@@ -153,7 +158,9 @@ const Gallery = () => {
         >
           {galleryImages.map((image, index) => (
             <SwiperSlide key={index}>
-              <SlideImg src={image.src} alt={`웨딩 사진 ${index + 1}`} />
+              <SlideImg>
+                {image.caption} 이미지
+              </SlideImg>
               <Caption>{image.caption}</Caption>
             </SwiperSlide>
           ))}

@@ -32,8 +32,7 @@ const BackgroundPattern = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('/patterns/hanji-texture.png');
-  background-size: cover;
+  background-color: #f9f3eb; /* 배경 패턴 이미지가 없을 경우 대체 색상 */
   opacity: 0.05;
   z-index: -1;
   pointer-events: none;
@@ -53,9 +52,9 @@ const WeddingInvitation = () => {
     // 페이지 로드 시 맨 위로 스크롤
     window.scrollTo(0, 0);
     
-    // 예시 배경 음악 로드 (실제 구현 시 교체 필요)
-    audioRef.current = new Audio('/audio/wedding-music.mp3');
-    audioRef.current.loop = true;
+    // 배경 음악 로드 - 실제 파일이 없으므로 주석 처리
+    // audioRef.current = new Audio('/audio/wedding-music.mp3');
+    // audioRef.current.loop = true;
     
     return () => {
       if (audioRef.current) {
@@ -75,6 +74,8 @@ const WeddingInvitation = () => {
         });
       }
       setIsPlaying(!isPlaying);
+    } else {
+      console.log('오디오 파일이 로드되지 않았습니다.');
     }
   };
 
